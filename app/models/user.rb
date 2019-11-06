@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_one: :shelf
+  has_one :shelf
 end
