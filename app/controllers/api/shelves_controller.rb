@@ -1,6 +1,7 @@
 class Api::ShelvesController < ApplicationController 
 
   def index
+    #binding.pry
     @shelves = Shelf.all 
     render json: @shelves
   end
