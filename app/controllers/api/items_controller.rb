@@ -1,7 +1,7 @@
 class Api::ItemsController < ApplicationController 
   def index
     #binding.pry
-    @items = Item.all 
+    @items = Item.where(shelf_id: params[:shelf_id]) 
     render json: @items 
   end
 
