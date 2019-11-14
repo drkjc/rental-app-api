@@ -1,6 +1,7 @@
 class Api::CartsController < ApplicationController 
 
   def index
+    binding.pry
   end
 
   def show 
