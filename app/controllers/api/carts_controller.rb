@@ -10,6 +10,11 @@ class Api::CartsController < ApplicationController
   end
 
   def create 
-    binding.pry
+    short_params = params[:item][:item]
+    buyer = User.find(1)
+    seller = User.find(short_params[:shelf_id])
+    item = Item.find(short_params[:id])
+    buyer.cart.items << item 
+    seller.shelf.items.delete(item) 
   end
 end
