@@ -9,12 +9,24 @@ class Api::CartsController < ApplicationController
    render json: @cart
   end
 
-  def create 
-    short_params = params[:item][:item]
-    buyer = User.find(1)
-    seller = User.find(short_params[:shelf_id])
-    item = Item.find(short_params[:id])
-    buyer.cart.items << item 
-    seller.shelf.items.delete(item) 
+  def create
+    binding.pry
+    # get params 
+    # _params = params[:item][:item]
+    # # get buyer and seller
+    # buyer = User.find(1)
+    # seller = User.find(_params[:shelf_id])
+    # # get item and add start & end date
+    # item = Item.find(_params[:id])
+    # item.start_date = params[:item][:startDate]
+    # item.end_date = params[:item][:endDate]
+    # item.rented = true
+    # item.save
+    # # add item to cart
+    # buyer.cart.items << item 
+    # # remove item from shelf
+    # seller.shelf.items.delete(item) 
+
+    redirect_to root_path
   end
 end
