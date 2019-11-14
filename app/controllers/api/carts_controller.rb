@@ -8,4 +8,8 @@ class Api::CartsController < ApplicationController
    @cart = Cart.find(params[:id])
    render json: @cart
   end
+
+  def create 
+    binding.pry
+  end
 end

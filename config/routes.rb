@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :items 
 
     get '/carts/:id', to: 'carts#show', as: 'cart'
+    resources :carts, except: [:show]
 
     resources :shelves do 
       resources :items
