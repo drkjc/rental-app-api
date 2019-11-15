@@ -22,8 +22,10 @@ class Api::CartsController < ApplicationController
     item.rented = true
     item.shelf_id = seller.id
     item.cart_id = buyer.id
-    binding.pry
+  
     item.save
+
+    render json: item
   end
 
   def destroy 
@@ -38,6 +40,8 @@ class Api::CartsController < ApplicationController
     item.end_date = ''
     item.rented = false
     item.save
+
+    render json: item
   end
 
 end
