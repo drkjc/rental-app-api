@@ -10,23 +10,34 @@ class Api::CartsController < ApplicationController
   end
 
   def create
+    #get params 
+    _params = params[:item][:item]
+    # get buyer and seller
+    buyer = User.find(1)
+    seller = User.find(_params[:shelf_id])
+    # get item, add start & end date, rental bool, and ids
+    item = Item.find(_params[:id])
+    item.start_date = params[:item][:startDate]
+    item.end_date = params[:item][:endDate]
+    item.rented = true
+    item.shelf_id = seller.id
+    item.cart_id = buyer.id
     binding.pry
-    # get params 
-    # _params = params[:item][:item]
-    # # get buyer and seller
-    # buyer = User.find(1)
-    # seller = User.find(_params[:shelf_id])
-    # # get item and add start & end date
-    # item = Item.find(_params[:id])
-    # item.start_date = params[:item][:startDate]
-    # item.end_date = params[:item][:endDate]
-    # item.rented = true
-    # item.save
-    # # add item to cart
-    # buyer.cart.items << item 
-    # # remove item from shelf
-    # seller.shelf.items.delete(item) 
-
-    redirect_to root_path
+    item.save
   end
+
+  def destroy 
+    _params = params[:item]
+
+    seller = User.find(_params[:shelf_id])
+    item = Item.find(_params[:id])
+
+    item.shelf_id = seller.id 
+    item.cart_id = seller.id 
+    item.start_date = ''
+    item.end_date = ''
+    item.rented = false
+    item.save
+  end
+
 end
