@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
     resources :items 
 
+    resources :users do 
+      resources :shelves do 
+        resources :items
+      end
+    end
+
     resources :carts  do 
       resources :items 
     end
