@@ -16,15 +16,24 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    renter_id = User.find(1)
-    @item = Item.find(params[:cart][:item][:id]) 
+    # renter_id = User.find(1)
+    if params[:cart_id]
+      @item = Item.find(params[:cart][:item][:id]) 
 
-    @item.cart_id = params[:cart_id]
-    @item.start_date = params[:cart][:startDate]
-    @item.end_date = params[:cart][:endDate]
-    @item.rented = true 
-    @item.save 
-    render json: @item
+      @item.cart_id = params[:cart_id]
+      @item.start_date = params[:cart][:startDate]
+      @item.end_date = params[:cart][:endDate]
+      @item.rented = true 
+      @item.save 
+      render json: @item
+    elsif params[:shelf_id]
+      @item = Item.new(item_params)
+      @item.cart_id = params[:shelf_id]
+      @item.shelf_id = params[:shelf_id]
+      @item.rented = false 
+      @item.save 
+      render json: @item
+    end
   end
 
   def destroy 
@@ -38,5 +47,11 @@ class Api::ItemsController < ApplicationController
     @item.save 
 
     render json: @item
+  end
+
+  private 
+
+  def item_params
+    params.require(:item).permit(:name, :category, :price)
   end
 end
