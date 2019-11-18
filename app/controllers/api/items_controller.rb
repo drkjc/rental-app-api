@@ -10,7 +10,6 @@ class Api::ItemsController < ApplicationController
   end
 
   def show 
-    binding.pry
     @item = Item.find(params[:id])
     render json: @item
   end
@@ -34,6 +33,15 @@ class Api::ItemsController < ApplicationController
       @item.save 
       render json: @item
     end
+  end
+
+  def update
+    @item = Item.find(params[:item][:id])
+    @item.name = params[:item][:name]
+    @item.price = params[:item][:price]
+    @item.category = params[:item][:category]
+    @item.save 
+    render json: @item
   end
 
   def destroy 
