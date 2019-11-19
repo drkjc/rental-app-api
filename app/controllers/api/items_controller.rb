@@ -46,16 +46,25 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy 
-    renter = User.find(1)
-    @item = Item.find(params[:id])
+    if params['from']['shelf']
+      @shelf = Shelf.find(params[:shelf_id])
+      @item = Item.find(params[:id])
 
-    @item.cart_id = @item.shelf_id
-    @item.start_date = ''
-    @item.end_date = ''
-    @item.rented  = false 
-    @item.save 
+      @shelf.items.destroy(@item)
+      @shelf.save
+      render json: @item
+    else
+      renter = User.find(1)
+      @item = Item.find(params[:id])
 
-    render json: @item
+      @item.cart_id = @item.shelf_id
+      @item.start_date = ''
+      @item.end_date = ''
+      @item.rented  = false 
+      @item.save 
+
+      render json: @item
+    end
   end
 
   private 

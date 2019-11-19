@@ -10,4 +10,8 @@ class Api::ShelvesController < ApplicationController
    @shelf = Shelf.find(params[:id])
    render json: @shelf
   end
+
+  def destroy 
+    #binding.pry
+  end
 end
