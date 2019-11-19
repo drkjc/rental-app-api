@@ -5,6 +5,7 @@ class Api::ItemsController < ApplicationController
       render json: @shelf.items 
     elsif params[:cart_id] 
       @cart = Cart.find(params[:cart_id])
+      #binding.pry
       render json: @cart.items 
     end
   end
