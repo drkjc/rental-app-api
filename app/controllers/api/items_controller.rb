@@ -27,12 +27,14 @@ class Api::ItemsController < ApplicationController
       @item.save 
       render json: @item
     elsif params[:shelf_id]
+      @shelf = Shelf.find(params[:shelf_id])
       @item = Item.new(item_params)
       @item.cart_id = params[:shelf_id]
       @item.shelf_id = params[:shelf_id]
       @item.rented = false 
       @item.save 
-      render json: @item
+      @shelf.items << @item
+      render json: @shelf.items
     end
   end
 
@@ -53,8 +55,9 @@ class Api::ItemsController < ApplicationController
       @shelf.items.destroy(@item)
       @shelf.save
       render json: @item
-    else
-      renter = User.find(1)
+    end
+    if params['from']['cart']
+      @cart = Cart.find(params[:cart_id])
       @item = Item.find(params[:id])
 
       @item.cart_id = @item.shelf_id
@@ -62,7 +65,6 @@ class Api::ItemsController < ApplicationController
       @item.end_date = ''
       @item.rented  = false 
       @item.save 
-
       render json: @item
     end
   end
