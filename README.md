@@ -1,24 +1,39 @@
-# README
+# Rental App (Divvy)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Looking for a new book to read but can't find it at the library? Try Divvy! People in your area are sharing their bookshelves! Sign up today to share yours!
 
-Things you may want to cover:
+## Getting Started 
 
-* Ruby version
+Clone the clien side repo (https://github.com/drkjc/rental-app-client) and this repo and start the server to get up and running.
 
-* System dependencies
+* For the API
+```
+rails s -p 3001
+```
 
-* Configuration
+* For the client side 
+```
+npm start
+```
 
-* Database creation
+## Built With
 
-* Database initialization
+Rails 5.2.3
+React 16.11.0
+Redux 4.0.4
 
-* How to run the test suite
+## Contributing 
 
-* Services (job queues, cache servers, search engines, etc.)
+Not accepting contributions at this time.
 
-* Deployment instructions
+## Authors 
 
-* ...
+* **Derek Cerretani** - [drkjc](https://github.com/drkjc)
+
+## License 
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgements 
+  
+*  Initally created for Flatiron School React/Redux/Rails Portfolio Project 
