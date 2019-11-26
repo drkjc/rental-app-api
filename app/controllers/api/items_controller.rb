@@ -18,11 +18,11 @@ class Api::ItemsController < ApplicationController
   def create
     # renter_id = User.find(1)
     if params[:cart_id]
-      @item = Item.find(params[:cart][:item][:id]) 
+      @item = Item.find(params[:item][:item][:id]) 
 
       @item.cart_id = params[:cart_id]
-      @item.start_date = params[:cart][:startDate]
-      @item.end_date = params[:cart][:endDate]
+      @item.start_date = params[:item][:startDate]
+      @item.end_date = params[:item][:endDate]
       @item.rented = true 
       @item.save 
       render json: @item
@@ -65,7 +65,7 @@ class Api::ItemsController < ApplicationController
       @item.end_date = ''
       @item.rented  = false 
       @item.save 
-      render json: @item
+      render json: @cart.items
     end
   end
 
