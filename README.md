@@ -6,6 +6,8 @@ Looking for a new book to read but can't find it at the library? Try Divvy! Peop
 
 Clone the clien side repo (https://github.com/drkjc/rental-app-client) and this repo and start the server to get up and running.
 
+[Video Walkthrough](https://www.youtube.com/watch?v=yngR9xrMqN4&feature=emb_title)
+
 * For the API
 ```
 rails s -p 3001
